@@ -1,0 +1,28 @@
+
+
+<?php
+
+$mNum = 0;
+$menu = array(
+
+	array("url" => "/fresh", "name" => "Свеженькое"),
+	array("url" => "/photos", "name" => "Фотографии"),
+	array("url" => "/video", "name" => "Видео"),
+	array("url" => "/events", "name" => "События"),
+	array("url" => "/faq", "name" => "ЧАВО")
+
+);
+
+?>
+
+	<ul id="nav">
+
+		<?php foreach ($menu as $item) { ?>
+			<li class="<?=$mNum==0?'first':''?> <?=stristr($item['url'], $routeParams[0])?'on':''?>">
+				<a href="<?=$item['url']?>"><?=$item['name']?></a>
+			</li>
+		<?php $mNum++; } ?>
+
+	</ul>
+
+

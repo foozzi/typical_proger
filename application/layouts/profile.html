@@ -1,0 +1,117 @@
+<?php require_once HEADER; ?>
+
+<?php require_once MENU; ?>
+
+
+
+  <div id='preview_user' align='center'></div>
+
+<script type="text/javascript">
+$('document').ready(function()
+  {
+    $('#user_data').ajaxForm( 
+    {
+      target: '#preview_user',
+      success: function() 
+      {
+        $('#user_data').resetForm();
+        // Разблокировка кнопки после отправки
+        $('input[type="submit"]').removeAttr('disabled');
+        // Разблокировка textarea после отправки
+        $("#text").prop("disabled", false);
+      }
+    });
+    // Находим все формы в документе
+    $('#user_data').submit(function()
+    {
+     // Блокируем кнопки при отправке формы
+     $('input[type=submit]', this).attr('disabled', 'disabled');
+     // Блокируем textarea при отправке формы
+     $("#text").prop("disabled", true);
+    });
+  });
+</script>
+
+<div class="well">
+	В разработке
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#profile" data-toggle="tab">Профиль</a></li>
+      <li><a href="#avatar" data-toggle="tab">Аватар</a></li>
+      <li><a href="#info" data-toggle="tab">Инфо</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane active in" id="profile">
+      	<div id="tab">
+      		<div id="formbox">
+        <form id="user_data" action="/profile" method="post" enctype="multipart/form-data">
+            <label>Логин</label>
+            <input id="text" name="login" type="text" value="<?=$u_profile['name_user']?>" class="input-xlarge">
+            <label>Email</label>
+            <input id="text" name="email_user" type="text" value="<?=$u_profile['email_user']?>" class="input-xlarge">
+          	<div class="sign_up_fix">
+        	    <input class="btn btn-primary" type="submit" name="prof" value="Обновить"></input>
+        	</div>
+        </form>
+    </div>
+</div>
+      </div>
+
+<script type="text/javascript">
+$('document').ready(function()
+  {
+    $('#user_data1').ajaxForm( 
+    {
+      target: '#preview_user',
+      success: function() 
+      {
+        $('#user_data1').resetForm();
+        // Разблокировка кнопки после отправки
+        $('input[type="submit"]').removeAttr('disabled');
+        // Разблокировка textarea после отправки
+        //$("#text").prop("disabled", false);
+      }
+    });
+    // Находим все формы в документе
+    $('#user_data1').submit(function()
+    {
+     // Блокируем кнопки при отправке формы
+     $('input[type=submit]', this).attr('disabled', 'disabled');
+     // Блокируем textarea при отправке формы
+     $("#text").prop("disabled", true);
+    });
+  });
+</script>
+
+      <div class="tab-pane fade" id="avatar">
+      	<div id="tab2">
+      		<div id="formbox">
+    	<form id="user_data1" method="post" action="/profile" enctype="multipart/form-data">
+    	<div align="center">
+        	<label>Ваш аватар</label>
+        	<img class="thumbnail" src="<?=IMG?>no_avatar.png">
+        <div class="sign_up_fix">
+        	<label>Выбрать новый</label>
+        </div>
+        	<input id="text" name="avatar" class="" size="20" type="file" />  
+        </div>    	
+        	<div class="sign_up_fix">
+        	    <input disabled class="btn btn-primary" type="submit" name="ava" value="Обновить"></input>
+        	</div>
+    	</form>
+    </div>
+  </div>
+</div>
+
+      <div class="tab-pane fade" id="info">
+      	<div id="tab3">
+<label>Последняя авторизация:</label>
+  <code><?=$u_profile['user_agent']?></code>
+<label>IP:</label>
+  <?=long2ip($u_profile['ip_user'])?>
+    </div>
+ </div>
+
+
+
+
+<?php require_once FOOTER; ?>

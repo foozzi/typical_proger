@@ -1,0 +1,148 @@
+<?php require_once HEADER; ?>
+
+<?php require_once MENU; ?>
+            <!--/span-->
+<?php if(ifguest()) : ?>
+  <div class="accordion" id="accordion2">
+     <div class="accordion-group">
+        <div class="accordion-heading">
+           <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              <div class="add_link">Добавить пост</div>
+           </a>
+        </div>
+        <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+          <div class="accordion-inner">
+             <!--form-->
+
+               <div id="formbox">
+               <form id="add" action="/add" method="post" enctype="multipart/form-data">            
+               <div class="textarea">
+               <textarea id="text" class="span13" rows="2" maxlength="100" name="text" style="background: #272822"></textarea>
+               <div id="chars">100</div>
+         </div>
+         <div class="add_link">
+
+<div class="pull-right">
+
+    <input id="imageUpload" name="filename" class="" size="20" type="file" />
+
+</div>
+         </div>
+         <input class="btn btn-info" type="submit" id="submit" value="Предложить пост" name="ADD"></input>
+         </form>
+        </div>
+
+<script type="text/javascript">
+$('document').ready(function()
+  {
+    $('#add').ajaxForm( 
+    {
+      target: '#preview',
+      success: function() 
+      {
+        $('#add').resetForm();
+        // Разблокировка кнопки после отправки
+        $('input[type="submit"]').removeAttr('disabled');
+        // Разблокировка textarea после отправки
+        $("#text").prop("disabled", false); 
+      }
+    });
+    // Находим все формы в документе
+    $('#add').submit(function()
+    {
+     // Блокируем кнопки при отправке формы
+     $('input[type=submit]', this).attr('disabled', 'disabled');
+     // Блокируем textarea при отправке формы
+     $("#text").prop("disabled", true);
+    });
+  });
+</script>
+        <!--/form-->
+
+       </div>
+      </div>
+    </div>
+</div>
+<?php endif; ?>
+
+
+ <?php foreach($currentPosts['items'] as $view) { ?>
+
+                <div class="well">
+        <h2 class="num_post_position">#<a href="view?id=<?=$view['id_post']?>"><?=$view['id_post']?></a></h2>
+
+<p><?=$view['text_post']?></p>
+          <hr />
+
+          <?php if(!empty($view['img_mini'])) : ?>
+           <div align="center" >
+              <img class="thumbnail" src="<?=$view['img_mini']?>">
+            </div>
+          <?php endif; ?>
+            <hr />
+
+<!-- Иконка комментариев -->
+<p>
+<span class="label" >
+<i class="icon-comment"></i> Комментарии
+</span>
+
+<!-- Иконка share -->
+<span class="label" >
+<i class=" icon-share"></i>
+</span>
+
+<!-- Время -->
+<span class="label" >
+<?=$view['date_post']?>
+</span>
+
+<!-- Автор -->
+<span class="label" >
+<?=$view['author']?>
+</span>
+
+<!-- Иконка лайков -->
+<span class="label" >
+<a href="#" class="love white_link" id="<?=$view['id_post']?>">
+<i class="icon-heart"></i>
+<span align="left"><?=$view['like_post']?></span>
+</a>
+</span>
+</p>
+
+<hr />
+
+                </div>
+
+                <?php } ?>
+                <hr />
+
+
+<!-- Навигация -->
+<div class="pagination" align="center">
+    <?php if($currentPosts['current_page'] >= 2) {?>
+    <ul>
+      <?php if ($currentPosts['current_page'] == 1) { ?>
+      <li><a href="/main?p=<?=$currentPosts['pages'][1]['number']?>"><?=GO?></a></li>
+      <?php } else if ($currentPosts['current_page'] == $currentPosts['number_of_pages']) { ?>
+      <li><a href="/main?p=<?=$currentPosts['pages'][0]['number']?>"><?=BACK?></a></li>
+      <?php } else { ?>
+      <li><a href="/main?p=<?=$currentPosts['pages'][0]['number']?>"><?=BACK?></a></li>
+      <li><a href="/main?p=<?=$currentPosts['pages'][2]['number']?>"><?=GO?></a></li>
+      <?php } ?>
+    </ul>
+    <?php } ?>
+</div>
+
+
+<!-- END -->
+                <!--/row-->
+                <!--/row-->
+            </div>
+            <!--/span-->
+
+
+        </div>
+
+<?php require_once FOOTER; ?>

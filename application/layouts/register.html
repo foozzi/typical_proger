@@ -1,0 +1,73 @@
+<?php require_once HEADER; ?>
+
+<?php require_once MENU; ?>
+
+<div id="formbox"> 
+<form class="form-horizontal well" method="post" action="" id="reg">
+<fieldset>
+
+<!-- Form Name -->
+<legend><?=$title?></legend>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label">Имя</label>
+  <div class="controls">
+    <input id="" name="NICK" placeholder="" class="input-xlarge" type="text">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label">E-Mail</label>
+  <div class="controls">
+    <input id="" name="EMAIL" placeholder="" class="input-xlarge" type="text">
+    
+  </div>
+</div>
+
+<!-- Password input-->
+<div class="control-group">
+  <label class="control-label">Пароль</label>
+  <div class="controls">
+    <input id="" name="PASSWD" placeholder="" class="input-xlarge" type="password">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="control-group">
+  <label class="control-label"></label>
+  <div class="controls">
+    <input id="submit" type="submit" name="REG" class="btn btn-success" value="Регистрация" ></input>
+  </div>
+</div>
+
+</fieldset>
+</form>
+</div>
+</div>
+
+<script type="text/javascript">
+$('document').ready(function()
+  {
+    $('#reg').ajaxForm( 
+    {
+      target: '#preview_1',
+      success: function() 
+      {
+        $('#reg').resetForm();
+        $('input[type="submit"]').removeAttr('disabled');
+      }
+    });
+    // Находим все формы в документе
+    $('#reg').submit(function()
+    {
+     // Блокируем кнопки при отправке формы
+     $('input[type=submit]', this).attr('disabled', 'disabled');
+    });
+  });
+</script>
+
+<?php require_once FOOTER; ?>

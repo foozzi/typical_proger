@@ -1,0 +1,65 @@
+<?php if(!$OnePost) { header("Location /main"); }?>
+
+<?php require_once HEADER; ?>
+
+<?php require_once MENU; ?>
+
+<!-- View all post -->            
+    			<div class="well">	
+    	<h2 class="num_post_position">#<a href="#"><?=$OnePost['id_post']?></a></h2>					
+<!-- code -->
+<div class="highlight"><pre><code class="javascript"><span class="c1">// Get post</span>
+<span class="kd">if</span> <span class="nx">(</span><span class="nb">$_GET['<span class="s1">id</span>']</span> <span class="o">==</span> '<span class="s1"><?=$OnePost['id_post']?></span>'<span class="nx">)</span> <span class="p">{</span>
+    <span class="kd">echo</span> <span class="nb">$image</span><span class="p">;</span>
+    <span class="c1">// Get Detales</span>
+    <span class="kd">if</span> <span class="nx">(</span><span class="nb"><span class="kd">isset</span><span class="nx">(</span><span class="nb">$comments</span><span class="s1">,</span><span class="nb">$share</span><span class="s1">,</span><span class="nb">$like</span><span class="nx">)</span><span class="nx">)</span><span class="p">{</span>
+        <span class="kd">echo</span> <span class="nb">$comments</span><span class="s1">.</span><span class="nb">$share</span><span class="s1">.</span><span class="nb">$like</span><span class="p">;</span>
+</code></pre></div>
+<!-- /code -->
+
+<p><?=$OnePost['text_post']?></p>
+          <hr />
+          <div align="center" >
+    					<img class="thumbnail" src="<?=$OnePost['img_mini']?>">
+            </div>
+            <hr />
+<!-- Иконка комментариев -->  
+<p>    
+<span class="label" >   
+<i class="icon-comment"></i> Комментарии
+</span>  
+  
+<!-- Иконка share -->
+<span class="label" >
+<i class=" icon-share"></i>
+</span>
+
+<!-- Время -->
+<span class="label" >
+<?=$OnePost['date_post']?> 
+</span>
+
+<!-- Иконка лайков -->
+<span class="label" >
+<a href="#" class="love white_link" id="<?=$OnePost['id_post']?>"> 
+<i class="icon-heart"></i> 
+<span align="left"><?=$OnePost['like_post']?></span>  
+</a>  
+</span>
+</p>
+
+<hr />
+<!-- code -->
+<div class="highlight"><pre><code class="javascript"><span class="c1">// end</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<!-- /code -->
+
+
+
+    			</div>
+    			<hr />
+
+
+<?php require_once FOOTER; ?>

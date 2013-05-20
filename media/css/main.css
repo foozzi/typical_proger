@@ -1,0 +1,98 @@
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+.logo {
+  margin-left: 10px;
+}
+
+.sidebar_o {
+  margin-top: 10px;
+}
+
+.img_content {
+margin-right: auto;
+margin-left: auto;
+}
+
+.glass_block{
+    padding: 10px;
+    /*background-image: url(https://abs.twimg.com/a/1363285036/t1/img/wash-white-30.png);*/
+    background: rgb(239,239,239); /* аДаЛб аНаЕ аПаОаДаДаЕбаЖаИаВаАббаИб rgba */
+    background: rgba(238,238,238,0.2); /* аДаЛб аНаОбаМаАаЛбаНбб аБбаАбаЗаЕбаОаВ */
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=20); /* аДаЛб баОаДаНаОаГаО IE */
+    zoom: 1; /* аЗаАбббаКаА аДаЛб IE */
+    /*border: 1px solid #aaaaaa;*/
+    border-radius: 10px; /* баАаДаИбб аДаЛб аНаОбаМаАаЛбаНбб аБбаАбаЗаЕбаОаВ */
+    -moz-border-radius: 10px; /* аДаЛб Gecko аБбаАбаЗаЕбаОаВ */
+    -webkit-border-radius: 10px; /* аДаЛб Webkit аБбаАбаЗаЕбаОаВ */
+    -khtml-border-radius: 10px; /* аДаЛб KDE аБбаАбаЗаЕбаОаВ */
+  }
+  
+  .back{
+    padding: 10px;
+    /*background-image: url(https://abs.twimg.com/a/1363285036/t1/img/wash-white-30.png);*/
+    /*background: rgb(239,239,239); 
+    background: rgba(238,238,238);*/
+    /*zoom: 1;  IE */
+    /*border: 1px solid #aaaaaa;*/
+  }
+  
+.border_num_postition {
+border-right: 1px solid red;
+}
+  
+.num_post_position {
+margin-top: -10px;
+margin-left: -10px;
+color: #c3c3c3;
+}
+
+
+
+pre {
+background-color: #111111;
+}
+
+.add_link {
+text-align:  right;
+}
+
+
+
+.well {
+border: 1px solid rgb(195, 195, 195);
+}
+
+.accordion-heading {
+    background: #fff;
+    border: 1px solid rgb(195, 195, 195);
+    border-radius: 4px 4px 4px 4px;
+}
+
+.container {
+max-width: 940px;
+}
+
+a
+{
+text-decoration:none;
+}
+a:hover
+{
+text-decoration:none;
+}
+
+a.black_link{color: black;}
+a.black_link:hover{color: black;}
+a.white_link {color: #ffffff;}
+a.white_link:hover {color: #ffffff;}
+
+.sign_up_fix {
+margin-top: 20px;
+}

@@ -1,0 +1,172 @@
+<div class="back">
+	   <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="main">Типичный программист</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="main">Главная</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Другое <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Что то</a></li>
+                  <li><a href="#">Что то 2</a></li>
+                  <li><a href="#">Что то 3</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Название</li>
+                  <li><a href="#">Что то там</a></li>
+                  <li><a href="#">Что то там 2</a></li>
+                </ul>
+              </li>
+            </ul>
+<!-- if user already no auth -->
+<?php if(!ifguest()) : ?>
+  
+<script type="text/javascript">
+$('document').ready(function()
+  {
+    $('#logn').ajaxForm( 
+    {
+      target: '#preview_2',
+      success: function() 
+      {
+        $('#logn').resetForm();
+        $('input[type="submit"]').removeAttr('disabled');
+      }
+    });
+    // Находим все формы в документе
+    $('#logn').submit(function()
+    {
+     // Блокируем кнопки при отправке формы
+     $('input[type=submit]', this).attr('disabled', 'disabled');
+    });
+  });
+</script>
+
+    <div id="formbox"> 
+<ul class="nav pull-right">
+                  	<li class="divider-vertical"></li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" href="#" data-toggle="dropdown">Вход <strong class="caret"></strong></a>
+						<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+<?php $log = '/login'; ?>
+							<form id="logn" action="<?=$log?>" method="post" class="navbar-form" enctype="multipart/form-data">
+								<input style="margin-bottom: 15px;" type="text" name="LOGIN" placeholder="Login">
+								<input style="margin-bottom: 15px;" type="password" name="PASSWD_LOGN" placeholder="Password">
+                <!--Не прикреплять к IP(не безопасно) <input type="checkbox" name="not_attach_ip"><br>-->
+								<input class="btn btn-primary btn-block" type="submit" id="submit" name="LOGN" value="Войти">
+								<div align="center">
+							     <p>OR</p>
+								<a href="register" class="btn-success btn-primary btn-block">Регистрироватся</a>
+								</div>
+								<div class="sign_up_fix"></div>
+							</form>
+						</div>
+					</li>
+				</ul>
+            </div>
+
+<?php endif; ?>
+
+
+
+<!-- if user already auth -->
+<?php if(ifguest()) : ?>
+
+<ul class="nav pull-right">
+             <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Привет <?= $_SESSION['raw'] ?><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+				  <li class="nav-header">Профиль</li>
+                  <li><a href="/profile">Мой профиль</a></li>
+                  <li class="divider"></li>
+                  <li class="nav-header">Остальное</li>
+                  <li><a href="login/?exit">Выход</a></li>
+                </ul>
+              </li>
+            </ul>
+				</ul>
+<?php endif;?>
+
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+     <!-- Begin page content -->
+      <div class="container">
+    
+    <div class="container-fluid">
+      
+    	<div class="row-fluid ">
+       
+    		<div class="span3">
+        <img class="logo thumbnail" src="<?=IMG?>logo.png">
+          <div class="glass_block">
+    			<div class="well sidebar-nav sidebar_o">
+    				<ul class="nav nav-list">
+    					<li class="nav-header">
+    						'Навигация';
+    					</li>
+    					<li class="active">
+    						<a href="main">Главная</a>
+    					</li>
+    					<li class="active">
+    						<a href="#">Блог</a>
+    					</li>
+    					<li class="active">
+    						<a href="about">О нас</a>
+    					</li>
+    				</ul>
+    			</div>
+          
+
+          <div class="well sidebar-nav sidebar_o">
+    				<ul class="nav nav-list">
+    					<li class="nav-header">
+    						'Ссылки';
+    					</li>
+    					<li class="active">
+    						<a target="_blank" href="https://vk.com/typical_proger">Группа в vk.com</a>
+    					</li>
+    					<li class="active">
+    						<a target="_blank" href="http://tproger.ru/gen/">Создать эдвайс</a>
+    					</li>
+    					<li class="active">
+    						<a target="_blank" href="http://tproger.ru/quotation/">Создать цитату</a>
+    					</li>
+    				</ul>
+    			</div>
+          
+          <div class="well sidebar-nav sidebar_o">
+    				<ul class="nav nav-list">
+    					<li class="nav-header">
+    						'Подвал';
+    					</li>
+    					<div align="center">
+    						| <a target="_blank" href="#">Контакты</a> |  					
+    					
+    						<a target="_blank" href="#">About</a> |
+    					
+    						| <a target="_blank" href="#">Правила</a> |
+    					
+    					<hr />
+    					<p>© Company 2013</p>
+    					</div>
+    				</ul>
+    			</div>   
+          </div>
+    			<!--/.well -->
+    		</div>
+
+<div class="span8">
+
+  <div id='preview' align='center'></div>
+  <div id='preview_1' align='center'></div>
+  <div id='preview_2' align='center'></div>
